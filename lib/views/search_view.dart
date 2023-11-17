@@ -1,6 +1,9 @@
-import 'dart:math';
+import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/services/weather_services.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({Key? key}) : super(key: key);
@@ -19,8 +22,10 @@ class SearchView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              onChanged: (value) {
-                log(value as num);
+              onFieldSubmitted: (value) async {
+                WeatherModel weatherModel = await WeatherServices(Dio())
+                    .getCurrentWeather(cityName: value);
+                log(weatherModel.toString());
               },
               keyboardType: TextInputType.streetAddress,
               decoration: InputDecoration(
