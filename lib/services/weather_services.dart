@@ -6,7 +6,7 @@ class WeatherServices {
   final Dio dio;
   final String baseUrl = 'http://api.weatherapi.com/v1';
   final String apiKey = '795bdbdbf8ec4f9691b182739231311';
-
+//http://api.weatherapi.com/v1/forecast.json?key=795bdbdbf8ec4f9691b182739231311&q=Cairo&days=1
   WeatherServices(this.dio);
 
   Future<WeatherModel> getCurrentWeather({required String cityName}) async {

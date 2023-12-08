@@ -1,5 +1,5 @@
 class WeatherModel {
-  final String city;
+  final String cityName;
   final String date;
   final String image;
   final double temp;
@@ -8,7 +8,7 @@ class WeatherModel {
   final String weatherCondation;
 
   WeatherModel({
-    required this.city,
+    required this.cityName,
     required this.date,
     required this.image,
     required this.temp,
@@ -18,8 +18,8 @@ class WeatherModel {
   });
   factory WeatherModel.fromJson(json) {
     return WeatherModel(
-      city: json['location']['name'],
       date: json['current']['last_updated'],
+      cityName: json['location']['name'],
       image: json['forecast']['forecastday'][0]['condition']['icon'],
       temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],
       maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'],
